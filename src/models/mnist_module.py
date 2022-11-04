@@ -59,16 +59,16 @@ class MNISTLitModule(LightningModule):
     def forward(self, x: torch.Tensor):
         return self.net(x)
 
-    @torch.jit.export
-    def forward_jit(self, x: torch.Tensor):
-        with torch.no_grad():
-            # transform the inputs
-            x = self.predict_transform(x)
+    # @torch.jit.export
+    # def forward_jit(self, x: torch.Tensor):
+    #     with torch.no_grad():
+    #         # transform the inputs
+    #         x = self.predict_transform(x)
 
-            # forward pass
-            logits = self(x)
+    #         # forward pass
+    #         logits = self(x)
 
-            preds = F.softmax(logits, dim=-1)
+    #         preds = F.softmax(logits, dim=-1)
 
         return preds
 
